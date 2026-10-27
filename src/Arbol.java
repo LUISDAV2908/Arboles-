@@ -44,7 +44,7 @@ public class Arbol {
         return null;
     }
 
-    public boolean Insertar(String padre){
+    public boolean insertar(String padre){
         if(estaVacio()){
             setRaiz(new Nodo(padre));
             return true;
@@ -52,15 +52,15 @@ public class Arbol {
         return false;
     }
 
-    public boolean Insertar(String padre, String valorInfo){
+    public boolean insertar(String padre, String valorInfo){
         if(estaVacio()){
             setRaiz(new Nodo(valorInfo));
             return true;
         }
-        return Insertar(getRaiz(), valorInfo, padre);
+        return insertar(getRaiz(), valorInfo, padre);
     }
 
-    public boolean Insertar(Nodo act, String valorInfo, String padre){
+    public boolean insertar(Nodo act, String valorInfo, String padre){
         if(act == null){
             return false;
         }
@@ -70,7 +70,7 @@ public class Arbol {
         }
 
         for(Nodo hijo : act.getHijos()){
-            if(Insertar(hijo,valorInfo,padre)){
+            if(insertar(hijo,valorInfo,padre)){
                 return true;
             }
         }
