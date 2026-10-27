@@ -123,7 +123,19 @@ public class Arbol {
         return sb.toString();
     }
 
-    
+    public void preOrden(Nodo temp, StringBuilder sb){
+        if(temp == null)return;
+        sb.append(temp.getInfo()).append(" ");
+        for(Nodo hijo : temp.getHijos()){
+            preOrden(hijo, sb);
+        }
+    }
+
+    public String preOrden(){
+        StringBuilder sb = new StringBuilder();
+        preOrden(Raiz, sb);
+        return sb.toString();
+    }
 
 
 

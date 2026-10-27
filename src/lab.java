@@ -14,6 +14,8 @@ public class lab {
         a.insertar("C", "H");
         a.insertar("H", "D");
         a.insertar("D", "M");
+        System.out.println("El recorrido en preorden: ");
+        System.out.println(a.preOrden());
         System.out.println("EL RECORRIDO DEL ARBOL EN POSORDEN: ");
         System.out.println(a.posOrden());
     }
