@@ -12,6 +12,22 @@ public class Arbol {
         return Raiz;
     }
 
+    public void setNombre(String n){
+        this.nombre = n;
+    }
+
+    public void setRaiz(Nodo raiz){
+        this.Raiz = raiz;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public boolean estaVacio(){
+        return getRaiz() == null;
+    }
+
     public Nodo Buscar(Nodo act, String dato){
         if(act == null)return null;
         if(act.getInfo().equals(dato))return act;
@@ -24,8 +40,8 @@ public class Arbol {
     }
 
     public boolean Insertar(String padre, String valorInfo){
-        if(this.Raiz == null){
-            this.Raiz = new Nodo(valorInfo);
+        if(estaVacio()){
+            setRaiz(new Nodo(valorInfo));
             return true;
         }
         return Insertar(getRaiz(), valorInfo, padre);
@@ -42,6 +58,36 @@ public class Arbol {
 
         for(Nodo hijo : act.getHijos()){
             if(Insertar(hijo, padre, valorInfo)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean borrar(String valorInfo){
+        if(estaVacio())return false;
+        if(getRaiz().getInfo() != null && getRaiz().getInfo().equals(valorInfo)){
+            setRaiz(null);;
+            return true;
+        }
+        return borrar(getRaiz(),valorInfo);
+    }
+
+    public boolean borrar(Nodo act,String valorInfo){
+        if(act == null){
+            return false;
+        }
+        
+        for(int i = 0; i < act.getHijos().size();i++){
+            Nodo hijo = act.getHijos().get(i);
+            if(hijo.getInfo() != null && hijo.getInfo().equals(valorInfo)){
+                act.getHijos().remove(i);
+                return true;
+            }
+        }
+
+        for(Nodo p : act.getHijos()){
+            if(borrar(p,valorInfo)){
                 return true;
             }
         }
