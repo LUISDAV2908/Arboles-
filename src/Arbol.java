@@ -107,6 +107,24 @@ public class Arbol {
         return false;
     }
 
+    public void posOrden(Nodo temp, StringBuilder sb){
+        if(temp == null){
+            return;
+        }
+        for(Nodo hijo : temp.getHijos()){
+            posOrden(hijo, sb);
+        }
+        sb.append(temp.getInfo()).append(" ");
+    }
+
+    public String posOrden(){
+        StringBuilder sb = new StringBuilder();
+        posOrden(Raiz, sb);
+        return sb.toString();
+    }
+
+    
+
 
 
 
