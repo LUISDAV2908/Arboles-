@@ -3,6 +3,11 @@ public class Arbol {
     private String nombre;
     private Nodo Raiz;
 
+    public Arbol(){
+        this.nombre = "";
+        this.Raiz = null;
+    }
+
     public Arbol(String nombre){
         this.nombre = nombre;
         this.Raiz = null;
@@ -39,6 +44,14 @@ public class Arbol {
         return null;
     }
 
+    public boolean Insertar(String padre){
+        if(estaVacio()){
+            setRaiz(new Nodo(padre));
+            return true;
+        }
+        return false;
+    }
+
     public boolean Insertar(String padre, String valorInfo){
         if(estaVacio()){
             setRaiz(new Nodo(valorInfo));
@@ -57,7 +70,7 @@ public class Arbol {
         }
 
         for(Nodo hijo : act.getHijos()){
-            if(Insertar(hijo, padre, valorInfo)){
+            if(Insertar(hijo,valorInfo,padre)){
                 return true;
             }
         }
@@ -93,6 +106,8 @@ public class Arbol {
         }
         return false;
     }
+
+
 
 
 }
