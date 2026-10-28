@@ -137,7 +137,23 @@ public class Arbol {
         return sb.toString();
     }
 
+    public String levelOrden(){
+        StringBuilder sb = new StringBuilder();
+        Queue<Nodo> q = new LinkedList<>();
 
+        if(Raiz == null)
+            return "";
 
+        q.add(Raiz);
+        sb.append(Raiz.getInfo()).append(" ");
 
+        while(!q.isEmpty()){
+            for(Nodo hijo : q.poll().getHijos()){
+                sb.append(hijo.getInfo()).append(" ");
+                q.add(hijo);
+            }
+        }
+        System.out.println(sb.toString());
+        return "";
+    }
 }
