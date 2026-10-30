@@ -1,3 +1,4 @@
+package N_arios;
 public class lab {
     public static void main(String[] args) throws Exception {
         Arbol a = new Arbol();
