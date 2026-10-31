@@ -69,6 +69,43 @@ public class Arbol {
             System.out.print(n.getInfo() + " ");
         }
     }
+
+    public void numNodos(){
+        numNodos(raiz);
+    }
+    private int numNodos(Nodo n){
+        if(isVacioABB(n)){
+            return 0;
+        }
+        return 1 + numNodos(n.getNodoIzq()) + numNodos(n.getNodoDer());
+    }
+
+    public int numHojas(){
+        return numHojas(raiz);
+    }
+    private int numHojas(Nodo n){
+        if(isVacioABB(n)){
+            return 0;
+        }
+        if(isVacioABB(n.getNodoIzq()) && isVacioABB(n.getNodoDer())){
+            return 1;
+        }
+        return numHojas(n.getNodoIzq()) + numHojas(n.getNodoDer());
+    }
+
+    public int numInternos(){
+        return numInternos(raiz);
+    }
+    private int numInternos(Nodo n){
+        if(isVacioABB(n)){
+            return 0;
+        }
+        if(!isVacioABB(n.getNodoIzq()) || !isVacioABB(n.getNodoDer())){
+            return 1 + numInternos(n.getNodoIzq()) + numInternos(n.getNodoDer());
+        }
+        return 0;
+    }
+
     
 
 
