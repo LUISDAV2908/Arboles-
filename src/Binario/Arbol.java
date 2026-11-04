@@ -70,8 +70,8 @@ public class Arbol {
         }
     }
 
-    public void numNodos(){
-        numNodos(raiz);
+    public int numNodos(){
+        return numNodos(raiz);
     }
     private int numNodos(Nodo n){
         if(isVacioABB(n)){
