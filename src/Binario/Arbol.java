@@ -40,7 +40,7 @@ public class Arbol {
         if(!isVacioABB(n)){
             System.out.print(n.getInfo() + " ");
             preOrden(n.getNodoIzq());
-            preOrden(n.getNodoIzq());
+            preOrden(n.getNodoDer());
         }
     }
 
@@ -106,7 +106,24 @@ public class Arbol {
         return 0;
     }
 
-    
+    public int buscar(int valor) throws ClaveNoEncontradaException {
+        return buscar(raiz, valor);
+    }
+
+    private int buscar(Nodo actual, int valor) throws ClaveNoEncontradaException {
+        if (isVacioABB(actual)) {
+            String Error = "El valor " + valor + " no existe en el ABB.";
+            throw new ClaveNoEncontradaException(Error);
+        }
+        if (actual.getInfo() == valor) {
+            return actual.getInfo();
+        }
+        if (valor < actual.getInfo()) {
+            return buscar(actual.getNodoIzq(), valor);
+        } else {
+            return buscar(actual.getNodoDer(), valor);
+        }
+    }
 
 
 
