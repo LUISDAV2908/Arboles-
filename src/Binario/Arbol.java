@@ -1,5 +1,8 @@
 package Binario;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Arbol {
     private Nodo raiz;
 
@@ -125,6 +128,57 @@ public class Arbol {
         }
     }
 
+    public int profundidad(int valor)throws ClaveNoEncontradaException{
+        return profundidad(raiz, valor, 0);
+    }
+    private int profundidad(Nodo actual, int valor, int profundidad)throws ClaveNoEncontradaException{
+        if (isVacioABB(actual)) {
+            String Error = "El valor " + valor + " no existe en el ABB.";
+            throw new ClaveNoEncontradaException(Error);
+        }
+        if (actual.getInfo() == valor) {
+            return profundidad;
+        }
+        if (valor < actual.getInfo()) {
+            return profundidad(actual.getNodoIzq(), valor, profundidad + 1);
+        } else {
+            return profundidad(actual.getNodoDer(), valor, profundidad + 1);
+        }
+    }
 
+    public int altura(){
+        return altura(raiz);
+    }
+    private int altura(Nodo n) {
+        if (isVacioABB(n)) {
+            return -1;
+        }
+        return 1 + Math.max(altura(n.getNodoIzq()), altura(n.getNodoDer()));
+    }
 
+    public boolean completo() {
+        if (isVacioABB(raiz)) {
+            return true;
+        }
+
+        Queue<Nodo> cola = new LinkedList<>();
+        cola.add(raiz);
+        boolean encontre = false;
+
+        while (!cola.isEmpty()) {
+            Nodo actual = cola.poll();
+
+            if (actual == null) {
+                encontre = true;
+            } else {
+                if (encontre) {
+                    return false;
+                }
+                cola.add(actual.getNodoIzq());
+                cola.add(actual.getNodoDer());
+            }
+        }
+
+        return true;
+    }
 }
