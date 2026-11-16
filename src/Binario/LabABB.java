@@ -81,11 +81,23 @@ public class LabABB {
             System.out.println("La altura del árbol es:");
             System.out.println(arbol3.altura());
             System.out.println("La profundidad de 4 es:");
-            System.out.println(arbol3.profundidad(4));
+            try{
+                System.out.println(arbol3.profundidad(4));
+            } catch (ClaveNoEncontradaException e){
+                System.out.println(e.getMessage());
+            }
             System.out.println("La profundidad de 12 es:");
-            System.out.println(arbol3.profundidad(12));
+            try{
+                System.out.println(arbol3.profundidad(12));
+            } catch (ClaveNoEncontradaException e){
+                System.out.println(e.getMessage());
+            }
             System.out.println("La profundidad de 9 es:");
-            System.out.println(arbol3.profundidad(9));
+            try{
+                System.out.println(arbol3.profundidad(9));
+            } catch (ClaveNoEncontradaException e){
+                System.out.println(e.getMessage());
+            }
             System.out.println("Numero de nodos del arbol:");
             System.out.println(arbol3.numNodos());
             System.out.println("Numero de hojas del arbol:");
@@ -97,6 +109,9 @@ public class LabABB {
             else
                 System.out.println("El arbol no es completo");
 
+            System.out.println("Busqueda de 9: "+" "+arbol3.buscar(9));
+            System.out.println("Borrar 9: ");
+            arbol3.borrar(9);
             System.out.println("Busqueda de 9: "+" "+arbol3.buscar(9));
         }catch (ClaveDuplicadaException e){
             System.out.println(e.getMessage());

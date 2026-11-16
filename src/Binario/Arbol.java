@@ -181,4 +181,39 @@ public class Arbol {
 
         return true;
     }
+
+    public void borrar(int valor) throws ClaveNoEncontradaException {
+        raiz = borrar(raiz, valor);
+    }
+
+    private Nodo borrar(Nodo actual, int valor) throws ClaveNoEncontradaException {
+        if (isVacioABB(actual)) {
+            String Error = "El valor " + valor + " no existe en el ABB.";
+            throw new ClaveNoEncontradaException(Error);
+        }
+        if (valor < actual.getInfo()) {
+        actual.setNodoIzq(borrar(actual.getNodoIzq(), valor));
+        } else if (valor > actual.getInfo()) {
+        actual.setNodoDer(borrar(actual.getNodoDer(), valor));
+        } else {
+            if(isVacioABB(actual.getNodoIzq())){
+                return actual.getNodoDer();
+            }
+            if(isVacioABB(actual.getNodoDer())){
+                return actual.getNodoIzq();
+            }
+            int maxIzq = maximoIzquierdo(actual.getNodoIzq());
+            actual.setInfo(maxIzq);
+            actual.setNodoIzq(borrar(actual.getNodoIzq(), maxIzq));
+        }
+
+        return actual;
+    }
+
+    private int maximoIzquierdo(Nodo n){
+        while(!isVacioABB(n.getNodoDer())){
+            n = n.getNodoDer();
+        }
+        return n.getInfo();
+    }
 }
