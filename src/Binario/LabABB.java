@@ -38,6 +38,9 @@ public class LabABB {
                 System.out.println("El arbol es completo");
             else
                 System.out.println("El arbol no es completo");
+            System.out.println("Borrar 15: ");
+            arbol.borrar(7);
+            arbol.preOrden();
         // ----------------------------------------------------------
             System.out.println();
             System.out.println("Caso de Prueba 2: ");
@@ -58,6 +61,9 @@ public class LabABB {
             arbol2.postOrden();
             System.out.println("La altura del árbol es:");
             System.out.println(arbol2.altura());
+            System.out.println("Borrar 14:");
+            arbol2.borrar(14);
+            arbol2.preOrden();
 
             // ----------------------------------------------------------
             System.out.println();
@@ -112,7 +118,10 @@ public class LabABB {
             System.out.println("Busqueda de 9: "+" "+arbol3.buscar(9));
             System.out.println("Borrar 9: ");
             arbol3.borrar(9);
-            System.out.println("Busqueda de 9: "+" "+arbol3.buscar(9));
+            arbol3.preOrden();
+            System.out.println("Borrar 13: ");
+            arbol3.borrar(13);
+            arbol3.preOrden();
         }catch (ClaveDuplicadaException e){
             System.out.println(e.getMessage());
         } catch (ClaveNoEncontradaException e){
