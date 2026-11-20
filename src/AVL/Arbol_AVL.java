@@ -14,6 +14,27 @@ public class Arbol_AVL {
         return n == null;
     }
 
+    private int calculoBalance(Nodo n){
+        if(n == null){
+            return 0;
+        }
+        return altura(n.getNodoDer()) - altura(n.getNodoIzq());
+    }
+
+    private Nodo rotacionIzquierda(Nodo l){
+        Nodo temp = l.getNodoDer();
+        l.setNodoDer(temp.getNodoIzq());
+        temp.setNodoIzq(l);
+        return temp;
+    }
+
+    private Nodo rotacionDerecha(Nodo r){
+        Nodo temp = r.getNodoIzq();
+        r.setNodoIzq(temp.getNodoDer());
+        temp.setNodoDer(r);
+        return temp;
+    }
+
     public void insertar(int Valor) throws ClaveDuplicadaException{
         raiz = insertar(raiz, Valor);
         
@@ -31,6 +52,17 @@ public class Arbol_AVL {
             String Error = "El valor "+ valor + "ya existe en el ABB";
             throw new ClaveDuplicadaException(Error);
         }
+
+        int balance = calculoBalance(actual);
+        //Rotaciones en caso de que se desbalancee el arbol
+        //Rotacion simple a la izquierda
+        if(balance > 1 && valor > actual.getNodoDer().getInfo()){
+            return rotacionIzquierda(actual);
+        }
+        if(balance < -1 && valor < actual.getNodoIzq().getInfo()){
+            return rotacionDerecha(actual);
+        }
+        
         return actual;
     }
 
