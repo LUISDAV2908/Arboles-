@@ -58,25 +58,33 @@ public class Arbol_AVL {
 
         //Rotacion simple a la izquierda
         if(balance > 1 && valor > actual.getNodoDer().getInfo()){
-            System.out.println("Desbalanceo a la izquierda, inciando rotacion simple a la izquierda...");
-            return rotacionIzquierda(actual);
+            System.out.println("Desbalanceo a la derecha, inciando rotacion simple a la izquierda...");
+            Nodo temp = rotacionIzquierda(actual);
+            inOrden(temp);
+            return temp;
         }
         //Rotacion simple a la derecha
         if(balance < -1 && valor < actual.getNodoIzq().getInfo()){
-            System.out.println("Desbalanceo a la derecha, inciando rotacion simple a la derecha...");
-            return rotacionDerecha(actual);
+            System.out.println("Desbalanceo a la izquierda, inciando rotacion simple a la derecha...");
+            Nodo temp = rotacionDerecha(actual);
+            inOrden(temp);
+            return temp;
         }
         //Rotacion doble a la izquierda
         if(balance > 1 && valor < actual.getNodoDer().getInfo()){
-            System.out.println("Desbalanceo a la izquierda, iniciando rotacion doble a la izquierda...");
-            actual.setNodoDer(rotacionDerecha(actual));
-            return rotacionIzquierda(actual);
+            System.out.println("Desbalanceo a la derecha, iniciando rotacion doble a la derecha-izquierda...");
+            actual.setNodoDer(rotacionDerecha(actual.getNodoDer()));
+            Nodo temp = rotacionIzquierda(actual);
+            inOrden(temp);
+            return temp;
         }
         //Rotacion doble a la derecha
         if(balance < -1 && valor > actual.getNodoIzq().getInfo()){
-            System.out.println("Desbalanceo a la derecha, inciando rotacion doble a la derecha...");
-            actual.setNodoIzq(rotacionIzquierda(actual));
-            return rotacionDerecha(actual);
+            System.out.println("Desbalanceo a la izquierda, inciando rotacion doble a la izquierda-derecha...");
+            actual.setNodoIzq(rotacionIzquierda(actual.getNodoIzq()));
+            Nodo temp = rotacionDerecha(actual);
+            inOrden(temp);
+            return temp;
         }
         return actual;
     }
