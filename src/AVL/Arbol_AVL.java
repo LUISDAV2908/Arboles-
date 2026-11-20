@@ -55,14 +55,18 @@ public class Arbol_AVL {
 
         int balance = calculoBalance(actual);
         //Rotaciones en caso de que se desbalancee el arbol
+
         //Rotacion simple a la izquierda
         if(balance > 1 && valor > actual.getNodoDer().getInfo()){
+            System.out.println("Desbalanceo a la izquierda, inciando rotacion simple a la izquierda...");
             return rotacionIzquierda(actual);
         }
+        //Rotacion simple a la derecha
         if(balance < -1 && valor < actual.getNodoIzq().getInfo()){
+            System.out.println("Desbalanceo a la derecha, inciando rotacion simple a la derecha...");
             return rotacionDerecha(actual);
         }
-        
+
         return actual;
     }
 
