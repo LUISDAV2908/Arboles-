@@ -78,8 +78,6 @@ public class Arbol_AVL {
             actual.setNodoIzq(rotacionIzquierda(actual));
             return rotacionDerecha(actual);
         }
-
-
         return actual;
     }
 
