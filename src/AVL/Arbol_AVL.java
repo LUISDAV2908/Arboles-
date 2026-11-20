@@ -66,6 +66,19 @@ public class Arbol_AVL {
             System.out.println("Desbalanceo a la derecha, inciando rotacion simple a la derecha...");
             return rotacionDerecha(actual);
         }
+        //Rotacion doble a la izquierda
+        if(balance > 1 && valor < actual.getNodoDer().getInfo()){
+            System.out.println("Desbalanceo a la izquierda, iniciando rotacion doble a la izquierda...");
+            actual.setNodoDer(rotacionDerecha(actual));
+            return rotacionIzquierda(actual);
+        }
+        //Rotacion doble a la derecha
+        if(balance < -1 && valor > actual.getNodoIzq().getInfo()){
+            System.out.println("Desbalanceo a la derecha, inciando rotacion doble a la derecha...");
+            actual.setNodoIzq(rotacionIzquierda(actual));
+            return rotacionDerecha(actual);
+        }
+
 
         return actual;
     }
