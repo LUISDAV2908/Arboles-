@@ -58,21 +58,21 @@ public class Arbol_AVL {
 
         //Rotacion simple a la izquierda
         if(balance > 1 && valor > actual.getNodoDer().getInfo()){
-            System.out.println("Desbalanceo a la derecha, inciando rotacion simple a la izquierda...");
+            System.out.println("\nDesbalanceo a la derecha, inciando rotacion simple a la izquierda...");
             Nodo temp = rotacionIzquierda(actual);
             inOrden(temp);
             return temp;
         }
         //Rotacion simple a la derecha
         if(balance < -1 && valor < actual.getNodoIzq().getInfo()){
-            System.out.println("Desbalanceo a la izquierda, inciando rotacion simple a la derecha...");
+            System.out.println("\nDesbalanceo a la izquierda, inciando rotacion simple a la derecha...");
             Nodo temp = rotacionDerecha(actual);
             inOrden(temp);
             return temp;
         }
         //Rotacion doble a la izquierda
         if(balance > 1 && valor < actual.getNodoDer().getInfo()){
-            System.out.println("Desbalanceo a la derecha, iniciando rotacion doble a la derecha-izquierda...");
+            System.out.println("\nDesbalanceo a la derecha, iniciando rotacion doble a la derecha-izquierda...");
             actual.setNodoDer(rotacionDerecha(actual.getNodoDer()));
             Nodo temp = rotacionIzquierda(actual);
             inOrden(temp);
@@ -80,7 +80,7 @@ public class Arbol_AVL {
         }
         //Rotacion doble a la derecha
         if(balance < -1 && valor > actual.getNodoIzq().getInfo()){
-            System.out.println("Desbalanceo a la izquierda, inciando rotacion doble a la izquierda-derecha...");
+            System.out.println("\nDesbalanceo a la izquierda, inciando rotacion doble a la izquierda-derecha...");
             actual.setNodoIzq(rotacionIzquierda(actual.getNodoIzq()));
             Nodo temp = rotacionDerecha(actual);
             inOrden(temp);
@@ -90,7 +90,7 @@ public class Arbol_AVL {
     }
 
     public void preOrden(){
-        System.out.println("PREORDEN: ");
+        System.out.println("\nPreOrden: ");
         preOrden(raiz);
         System.out.println();
     }
@@ -103,7 +103,7 @@ public class Arbol_AVL {
     }
 
     public void inOrden(){
-        System.out.println("Inorden: ");
+        System.out.println("\nInOrden: ");
         inOrden(raiz);
         System.out.println();
     }
@@ -116,7 +116,7 @@ public class Arbol_AVL {
     }
 
     public void postOrden(){
-        System.out.println("PostOrden: ");
+        System.out.println("\nPostOrden: ");
         postOrden(raiz);
         System.out.println();
     }
